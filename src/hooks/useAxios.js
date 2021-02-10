@@ -10,7 +10,10 @@ const useAxios = (baseUrl) => {
 		const response = await axios.get(baseUrl + addUrl);
 		setItems((items) => [ ...items, { ...response.data, id: uuid() } ]);
 	}
-	return [ items, addItem ];
+	function removeItems() {
+		setItems([]);
+	}
+	return [ items, addItem, removeItems ];
 };
 
 export default useAxios;
